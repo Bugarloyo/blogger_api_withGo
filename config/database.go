@@ -34,5 +34,5 @@ func ConnectDB() {
 	database.AutoMigrate(&models.Blog{})
 
 	DB = database
-	fmt.Println("Databse berjasil terkoneksi dan termigrasi!")
+	fmt.Println("Databse berhasil terkoneksi dan termigrasi!")
 }

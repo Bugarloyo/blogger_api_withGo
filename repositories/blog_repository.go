@@ -34,5 +34,5 @@ func (r *BlogRepository) Update(blog *models.Blog) error {
 }
 
 func (r *BlogRepository) Delete(id uint) error {
-	return r.db.Delete(&models.Blog{}, id).Error
+	return r.db.Unscoped().Delete(&models.Blog{}, id).Error
 }

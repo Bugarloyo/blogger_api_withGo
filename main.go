@@ -5,6 +5,7 @@ import (
 	"blogger-api/controllers"
 	"blogger-api/repositories"
 	"blogger-api/services"
+	"blogger-api/routes"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
@@ -26,12 +27,9 @@ func main() {
 		AllowMethods:     "GET, POST, PUT, DELETE, OPTIONS",
 	}))
 
-	api := app.Group("/api")
-	api.Post("/blogs", blogController.CreateBlog)
-	api.Get("/blogs", blogController.GetAll)
-	api.Get("/blogs/:id", blogController.GetById)
-	api.Put("/blogs/:id", blogController.Update)
-	api.Delete("/blogs/:id", blogController.Delete)
+	routes.SetupBlogRoutes(app, blogController)
+
+	
 
 	port := os.Getenv("PORT")
 	if port == "" {
